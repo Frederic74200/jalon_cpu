@@ -1,6 +1,6 @@
 console.log("ok");
 import { Db } from "./Db.js";
-import { Pays } from "./Pays.js";
+import { Cpu } from "./Cpu.js";
 import { GetPostApi } from "./GetPostAPI.js";
 
 const urlJson = "https://raw.githubusercontent.com/ARFP/arfp.github.io/projets/machine-a-voter/docs/tp/web/api/api-cpuz/cpuz.json";
@@ -17,7 +17,7 @@ const app = {
     },
     async mounted() {
 
-        let collection = await GetPostApi.obtenirCollection('pays');
+        let collection = await GetPostApi.obtenirCollection('cpu');
         if (collection.length > 0) {
             this.statutPost = "Base de donnée déjà remplie ! ";
             return collection;
@@ -29,13 +29,11 @@ const app = {
 
         for (let item of json) {
 
-            let pays = new Pays(item);
-            let newPays = pays.nouveauPays();
-            let paysDb = await GetPostApi.postApi(newPays, 'pays');
+            let cpu = new Cpu(item);
+            let newCpu = cpu.newCpu();
+            let cpuDb = await GetPostApi.postApi(newCpu, 'cpu');
 
-            collectionPsh.push(paysDb);
-
-
+            collectionPsh.push(cpuDb);
         }
 
         if (collectionPsh.length == json.length) {

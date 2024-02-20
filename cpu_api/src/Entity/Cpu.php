@@ -40,9 +40,9 @@ class Cpu
     #[Groups('cpu')]
     private ?string $model = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 1)]
+    #[ORM\Column(type: Types::FLOAT, precision: 3, scale: 1)]
     #[Groups('cpu')]
-    private ?string $ghz = null;
+    private ?float $ghz = null;
 
     #[ORM\Column]
     #[Groups('cpu')]

@@ -23,3 +23,4 @@ class Cpu {
 
     }
 }
+export { Cpu }; 
