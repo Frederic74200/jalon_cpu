@@ -1,0 +1,115 @@
+:root {
+    --base-bg: #0079bc55;
+    --base-txt: #00008b;
+    --base-box: #0079bc;
+    --base-border: #FF0000;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+
+body {
+    width: 100vw;
+    height: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    color: var(--base-txt);
+    background: var(--base-bg);
+}
+
+header {
+    height: 20vh;
+    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/projets/machine-a-voter/docs/tp/web/api/api-cpuz/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    background-color: var(--base-txt);
+    color: var(--base-box);
+    font-size: 2.7rem;
+    opacity: 0.4;
+    width: 38vw;
+    height: 6vh;
+    padding-top: 1vh;
+    border-radius: 0 0 50% 0;
+    filter: brightness(1.5);
+}
+
+article {
+    padding: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3vw;
+
+}
+
+section {
+    width: 20vw;
+    border: 2px solid var(--base-border);
+    border-radius: 0 0 50% 0;
+    background: var(--base-bg);
+}
+
+
+h3 {
+    font-size: 1.5rem;
+    background: var(--base-bg);
+    filter: brightness(1.5);
+}
+
+td:nth-child(1) {
+    margin-left: 2vw;
+    font-size: 1.1rem;
+}
+
+td:nth-child(2) {
+    margin-right: 2vw;
+    font-size: 1.1rem;
+    text-align: right;
+}
+
+h2 {
+    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/projets/machine-a-voter/docs/tp/web/api/api-cpuz/banner.jpg");
+    background-size: auto;
+    color: var(--base-txt);
+    font-size: 2rem;
+    padding: 1vh;
+    filter: brightness(1.5);
+    margin: 1vh 0;
+}
+
+input,
+label {
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.AMD,
+.INTEL {
+
+    height: 4vh;
+    width: 4vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.INTEL {
+    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/e063b76fbb6a64cf0f7dd503354413f72a05d52c/docs/tp/web/api/api-cpuz/intel.svg");
+
+
+}
+
+.AMD {
+    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/e063b76fbb6a64cf0f7dd503354413f72a05d52c/docs/tp/web/api/api-cpuz/amd.svg");
+
+
+}

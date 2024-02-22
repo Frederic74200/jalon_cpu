@@ -11,10 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
-use ApiPlatform\Metadata\Put;
-
+use ApiPlatform\Metadata\Patch;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\SerializedName;
+
 
 #[ORM\Entity(repositoryClass: CpuRepository::class)]
 #[ApiResource(
@@ -24,7 +23,7 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
         new Get(uriTemplate: '/cpu/{id}'),
         new GetCollection(uriTemplate: '/cpu'),
         new Post(uriTemplate: '/cpu'),
-        new Put(uriTemplate: '/cpu/{id}'),
+        new Patch(uriTemplate: '/cpu/{id}'),
 
     ]
 )]
@@ -55,6 +54,10 @@ class Cpu
     #[ORM\Column(length: 20)]
     #[Groups('cpu')]
     private ?string $family = null;
+
+    #[ORM\Column(nullable: true)]
+    #[Groups('cpu')]
+    private ?int $stock = null;
 
     public function getId(): ?int
     {
@@ -117,6 +120,18 @@ class Cpu
     public function setFamily(string $family): static
     {
         $this->family = $family;
+
+        return $this;
+    }
+
+    public function getStock(): ?int
+    {
+        return $this->stock;
+    }
+
+    public function setStock(?int $stock): static
+    {
+        $this->stock = $stock;
 
         return $this;
     }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr
+">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU list</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="assets/js/cpuz.js" type="module"></script>
+</head>
+
+<body>
+
+    <main id="app">
+
+        <header>
+            <h1>List of the {{ entries }} manufactured On Mulhouse</h1>
+        </header>
+
+        <article>
+            <section v-for=" item of listCpu ">
+                <h3> {{ item.brand }} {{ item.family }} {{ item.model }}</h3>
+                <div :class="item.brand "></div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>ID :</td>
+                            <td> {{ item.id }} </td>
+                        </tr>
+                        <tr>
+                            <td>Frequency : </td>
+                            <td> {{ item.ghz }} </td>
+                        </tr>
+                        <tr>
+                            <td>Price : </td>
+                            <td> {{ item.price }} €</td>
+                        </tr>
+                        <tr>
+                            <td>Stock : </td>
+                            <td> {{ item.stock }} </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+        </article>
+
+        <h2>Inventory managment</h2>
+
+        <form action="" @submit.prevent="changeStock">
+
+            <select name="cpuId" id="cpuId" v-model="cpuId">
+                <option v-for=" item of listCpu " :value="item.id ">{{ item.brand }} {{ item.family }} {{ item.model }}
+                </option>
+            </select>
+            <input type="number" v-model="nbStck">
+            <label>Unit in stock</label>
+            <button type="submit">Update Stock</button>
+        </form>
+    </main>
+
+</body>
+
+</html>

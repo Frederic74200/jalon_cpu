@@ -39,5 +39,30 @@ class GetPostApi {
         return response;
     }
 
+
+
+    static async patchApi(_newPatch, _collection, _id) {
+
+        let options = {
+            method: 'PATCH',
+            headers: {
+                accept: 'application/json',
+                'Content-Type': 'application/merge-patch+json'
+            },
+            body: JSON.stringify(_newPatch)
+        }
+
+
+
+        let response = await fetch("http://localhost:3000/api/" + _collection + '/' + _id, options);
+
+        if (response.status == 200) {
+            let json = response.json();
+            return json;
+        }
+
+        throw new Error("La data n'a pas été enregistrée !");
+    }
+
 }
 export { GetPostApi }
