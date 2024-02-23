@@ -37,7 +37,8 @@ const app = {
         changeStock() {
             let newStock = Cpu.newStock(this.nbStck);
             let adCpu = GetPostApi.patchApi(newStock, 'cpu', this.cpuId);
-            document.location("http://localhost:3000/cpuz.html");
+            // window.location("http://localhost:3000/cpuz.html");
+            location.reload(true);
         }
     }
 }

@@ -21,8 +21,12 @@
 
         <article>
             <section v-for=" item of listCpu ">
-                <h3> {{ item.brand }} {{ item.family }} {{ item.model }}</h3>
-                <div :class="item.brand "></div>
+
+                <header>
+                    <h3> {{ item.brand }} {{ item.family }} {{ item.model }}</h3>
+                    <div :class="item.brand "></div>
+                </header>
+
                 <table>
                     <tbody>
                         <tr>
