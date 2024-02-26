@@ -27,7 +27,7 @@ body {
 
 header {
     height: 20vh;
-    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/projets/machine-a-voter/docs/tp/web/api/api-cpuz/banner.jpg");
+    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/develop/docs/tp/web/api/api-cpuz/banner.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -93,7 +93,7 @@ td:nth-child(2) {
 }
 
 h2 {
-    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/projets/machine-a-voter/docs/tp/web/api/api-cpuz/banner.jpg");
+    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/develop/docs/tp/web/api/api-cpuz/banner.jpg");
     background-size: auto;
     color: var(--base-box);
     font-size: 2rem;
@@ -111,8 +111,6 @@ label {
 
 .AMD,
 .INTEL {
-
-
     background-size: cover;
     background-repeat: no-repeat;
 

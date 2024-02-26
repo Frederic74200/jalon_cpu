@@ -32,7 +32,7 @@ class Cpu
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups('cpu')]
+    #[Groups('cpu', 'cpuProductions')]
     private ?int $id = null;
 
     #[ORM\Column(length: 10)]
