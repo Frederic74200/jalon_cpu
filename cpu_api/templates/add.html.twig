@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add CPU {% endblock %}
+
+{% block body %}
+    <h1>add a cpu de contact</h1>
+
+    {{ form_start(form) }}
+        {% for field in form %}
+            <div>
+                {{ form_label(field) }}
+                {{ form_widget(field) }}
+            </div>
+        {% endfor %}
+        <button type="submit">Envoyer</button>
+    {{ form_end(form) }}
+{% endblock %}

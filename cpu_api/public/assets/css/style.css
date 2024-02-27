@@ -93,7 +93,7 @@ td:nth-child(2) {
 }
 
 h2 {
-    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/develop/docs/tp/web/api/api-cpuz/banner.jpg");
+    background-image: url("https://arfp.github.io/tp/web/api/api-cpuz/banner.jpg");
     background-size: auto;
     color: var(--base-box);
     font-size: 2rem;
@@ -119,7 +119,7 @@ label {
 .INTEL {
     height: 50px;
     width: 50px;
-    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/e063b76fbb6a64cf0f7dd503354413f72a05d52c/docs/tp/web/api/api-cpuz/intel.svg");
+    background-image: url("https://arfp.github.io/tp/web/api/api-cpuz/intel.svg");
 
 
 }
@@ -128,7 +128,7 @@ label {
     height: 70px;
     width: 70px;
     background-position-y: -10px;
-    background-image: url("https://raw.githubusercontent.com/ARFP/arfp.github.io/e063b76fbb6a64cf0f7dd503354413f72a05d52c/docs/tp/web/api/api-cpuz/amd.svg");
+    background-image: url("https://arfp.github.io/tp/web/api/api-cpuz/amd.svg");
 
 
 }

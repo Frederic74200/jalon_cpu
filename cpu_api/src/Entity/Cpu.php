@@ -2,18 +2,20 @@
 
 namespace App\Entity;
 
+use App\Entity\CpuProduction;
+
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CpuRepository;
-use Doctrine\DBAL\Types\Types;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\EntityManagerInterface;
+
 use Doctrine\ORM\Mapping as ORM;
-
-
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Patch;
 use Symfony\Component\Serializer\Annotation\Groups;
-
 
 #[ORM\Entity(repositoryClass: CpuRepository::class)]
 #[ApiResource(
@@ -31,15 +33,16 @@ class Cpu
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
+
+    #[Groups('cpu')]
     #[ORM\Column]
-    #[Groups('cpu', 'cpuProductions')]
     private ?int $id = null;
 
     #[ORM\Column(length: 10)]
     #[Groups('cpu')]
     private ?string $model = null;
 
-    #[ORM\Column(type: Types::FLOAT, precision: 3, scale: 1)]
+    #[ORM\Column]
     #[Groups('cpu')]
     private ?float $ghz = null;
 
@@ -59,6 +62,14 @@ class Cpu
     #[Groups('cpu')]
     private ?int $stock = null;
 
+    #[ORM\OneToMany(mappedBy: 'cpu', targetEntity: CpuProduction::class)]
+    private Collection $cpuProductions;
+
+    public function __construct()
+    {
+        $this->cpuProductions = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,12 +87,12 @@ class Cpu
         return $this;
     }
 
-    public function getGhz(): ?string
+    public function getGhz(): ?float
     {
         return $this->ghz;
     }
 
-    public function setGhz(string $ghz): static
+    public function setGhz(float $ghz): static
     {
         $this->ghz = $ghz;
 
@@ -132,6 +143,36 @@ class Cpu
     public function setStock(?int $stock): static
     {
         $this->stock = $stock;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CpuProduction>
+     */
+    public function getCpuProductions(): Collection
+    {
+        return $this->cpuProductions;
+    }
+
+    public function addCpuProduction(CpuProduction $cpuProduction): static
+    {
+        if (!$this->cpuProductions->contains($cpuProduction)) {
+            $this->cpuProductions->add($cpuProduction);
+            $cpuProduction->setCpu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCpuProduction(CpuProduction $cpuProduction): static
+    {
+        if ($this->cpuProductions->removeElement($cpuProduction)) {
+            // set the owning side to null (unless already changed)
+            if ($cpuProduction->getCpu() === $this) {
+                $cpuProduction->setCpu(null);
+            }
+        }
 
         return $this;
     }

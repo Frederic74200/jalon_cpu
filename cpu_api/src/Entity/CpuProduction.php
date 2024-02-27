@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Cpu;
+
+use Doctrine\ORM\EntityManagerInterface;
+
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CpuProductionRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -36,15 +38,15 @@ class CpuProduction
     #[Groups('cpuProduction')]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::SMALLINT)]
+    #[ORM\Column]
     #[Groups('cpuProduction')]
     private ?int $productionTime = null;
 
-    #[ORM\ManyToOne(targetEntity: Cpu::class, inversedBy: 'cpuProductions')]  // Correction ici
+    # #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: Cpu::class, inversedBy: 'cpuProductions')]
+    #[Groups('cpuProduction')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups('cpuProduction', 'cpu')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Cpu $cpuId = null;
+    private ?Cpu $cpu = null;
 
     public function getId(): ?int
     {
@@ -87,14 +89,14 @@ class CpuProduction
         return $this;
     }
 
-    public function getCpuId(): ?Cpu
+    public function getCpu(): ?Cpu
     {
-        return $this->cpuId;
+        return $this->cpu;
     }
 
-    public function setCpuId(?Cpu $cpuId): static
+    public function setCpu(?Cpu $cpu): static
     {
-        $this->cpuId = $cpuId;
+        $this->cpu = $cpu;
 
         return $this;
     }
