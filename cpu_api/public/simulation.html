@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="assets/js//simulation.js" type="module"></script>
+</head>
+
+<body>
+
+    <main id="app">
+        <header>
+            <h1>CPU Production Simulation</h1>
+        </header>
+        <div class="productionLine">
+            <label for="">Current CPU Status</label>
+            <progress name="cpuStatus" id="cpuStatus" min="0" max="10" step="1" :value="rgval"></progress>
+            <br>
+            <label for="">Total produced</label>
+            <progress name="cpuProdu" id="cpuProdu" min="0" max="10" step="1" :value="prval">Production
+                totale</progress>
+            <br>
+            <label for="">Number of units to produce</label>
+            <input type="number" name="" id="">
+            <button type="button" @click="addProd">Add</button>
+
+        </div>
+
+
+
+    </main>
+
+</body>
+
+</html>

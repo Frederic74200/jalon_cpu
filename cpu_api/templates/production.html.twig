@@ -4,7 +4,16 @@
 
 {% block body %}
 
-    <h1>list of productions line</h1>
+{% for message in app.flashes('success') %}
+    <div class="flash-notice">
+   <script style="background-color: blueviolet;">  alert("+ {{ message }}+") </script>      
+    </div>
+{% endfor %}
+
+
+    <h1>List of production lines</h1>
+
+    <button type="button"><a href="http://localhost:3000/add">Add a line</a></button>
     <table>
 <thead>
     <tr>
@@ -23,6 +32,8 @@
       <td>{{ production.description }}</td> 
       <td>{{ production.productionTime }}</td> 
       <td>{{ production.cpu.id  }}</td>
+      <td><button type="button"><a href="http://localhost:3000{{ path('modify', {'id': production.id}) }}">Modify</a></button></td>
+      <td><button type="button"><a href="http://localhost:3000{{ path('delete_production', {'id': production.id}) }}"> [X] </a></button></td>
     </tr>
       {% endfor %}
 </tbody>
