@@ -11,9 +11,6 @@ const app = {
             listCpu: [],
             cpuId: "",
             nbStck: 0
-
-
-
         }
     },
     async mounted() {
@@ -24,8 +21,6 @@ const app = {
         for (let item of json) {
             this.listCpu.push(new Cpu(item));
         }
-
-        console.log(this.listCpu);
 
     },
     computed: {

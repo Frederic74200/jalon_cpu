@@ -1,10 +1,13 @@
 class Production {
 
-    constructor(_productionTime, _nbToProduce) {
+    constructor(_cpuId, _productionTime) {
+        this.productionId = "prod" + _cpuId;
+        this._cpuId = _cpuId;
         this.productionTime = _productionTime;
-        this.nbToProduce = _nbToProduce;
+        //  this.nbToProduce = _nbToProduce;
         this.interval = 0;
         this.nbProduct = 0;
+        this.nbToProduce = 0;
     }
 
     getInterVal() {
@@ -21,6 +24,8 @@ class Production {
 
 
     addProd() {
+        let bnt = document.getElementById(this.productionId);
+        bnt.setAttribute("disabled", "true");
 
         // Définir un intervalle unique en dehors de la boucle
         const waitInterval = setInterval(() => {
@@ -46,10 +51,13 @@ class Production {
                         this.interval = 0;
 
                     }
-                }, this.productionTime * 1000);
+                }, /* this.productionTime * */ 1000);
 
             }
         }, this.productionTime * this.nbToProduce * 1000);
+
+        bnt.setAttribute("disabled", "false");
+
 
     }
 

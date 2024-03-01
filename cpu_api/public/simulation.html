@@ -16,22 +16,43 @@
         <header>
             <h1>CPU Production Simulation</h1>
         </header>
-        <div class="productionLine">
-            <label for="">Current CPU Status</label>
-            <progress name="cpuStatus" id="cpuStatus" min="0" max="10" step="1" :value="rgval"></progress>
-            <br>
-            <label for="">Total produced</label>
-            <progress name="cpuProdu" id="cpuProdu" min="0" max="10" step="1" :value="prval">Production
-                totale</progress>
-            <br>
-            <label for="">Number of units to produce</label>
-            <input type="number" name="" id="">
-            <button type="button" @click="addProd">Add</button>
 
-        </div>
+        <article>
+            <div class="productionLine" v-for=" item of listLines">
+                <h3>{{ item.name }} </h3>
+                <p> {{ item.description }} </p>
+                <p> {{ item.Production.productionTime }} </p>
+
+                <label for="">Current CPU Status</label>
+                <progress name="cpuStatus" min="0" :max=" item.productionTime " step="1"
+                    :value="item.Production.interval"></progress>
+                <br>
+                <label for="">Total produced</label>
+                <progress :name="item.Production.productionId " min="0" :max=" item.Production.nbToProduce" step="1"
+                    :value="item.Production.nbProduct">Production
+                    totale</progress>
+                <p>Nb proctuted {{ item.Production.nbProduct }}</p>
+                <br>
+                <label for="">Number of units to produce</label>
+                <input type="number" name="" v-model=" item.Production.nbToProduce ">
+                <button type="button" :id=" item.Production.productionId "
+                    @click="item.Production.addProd()">Add</button>
 
 
 
+            </div>
+
+
+
+
+        </article>
+
+
+        <!--  <aside id="test" v-for=" item of test">
+
+            <p style="margin-left: 20px;">{{ item }}</p>
+        </aside>
+        <button type="button" @click="plusUn">plus</button> -->
     </main>
 
 </body>

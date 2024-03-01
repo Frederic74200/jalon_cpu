@@ -2,31 +2,30 @@ console.log("ok");
 import { Db } from "./Db.js";
 import { Cpu } from "./Cpu.js";
 import { CpuProduction } from "./CpuProduction.js";
+
 import { GetPostApi } from "./GetPostAPI.js";
 
-const urlJson = "http://localhost:3000/api/cpu";
+const urlJson = "http://localhost:3000/api/cpuProduction";
 
 const app = {
     data() {
         return {
-            toto: "totototot",
             rgval: 0,
-            prval: 0
-
-
-
+            prval: 0,
+            listLines: [],
+            toto: "tototoot",
+            test: [1, 5]
         }
     },
     async mounted() {
 
+        let json = await Db.fetchJson(urlJson);
 
-        /*   let json = await Db.fetchJson(urlJson);
-  
-          for (let item of json) {
-              this.listCpu.push(new Cpu(item));
-          }
-  
-          console.log(this.listCpu); */
+        for (let item of json) {
+            this.listLines.push(new CpuProduction(item));
+        }
+
+        console.log(this.listLines);
 
     },
     computed: {
@@ -72,6 +71,15 @@ const app = {
 
                 }
             }, 1000);
+
+        },
+
+
+        plusUn() {
+            while (this.test[0] < 1000) {
+                this.test[0]++;
+                this.test[1]++;
+            }
 
         }
 
