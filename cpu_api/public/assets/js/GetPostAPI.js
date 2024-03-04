@@ -39,6 +39,46 @@ class GetPostApi {
         return response;
     }
 
+    /* 
+        static async getById(_collection, _id) {
+            let url = "http://localhost:3000/api/" + _collection + "/" + _id;
+    
+            let options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json'
+                }
+            };
+    
+            let response = await fetch(url, options);
+            let json = await response.json();
+            return json;
+        } */
+
+    static async getById(_collection, _id) {
+        try {
+            let url = "http://localhost:3000/api/" + _collection + "/" + _id;
+
+            let options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json'
+                }
+            };
+
+            let response = await fetch(url, options);
+
+            if (!response.ok) {
+                throw new Error(`API Error: ${response.status} - ${response.statusText}`);
+            }
+
+            let json = await response.json();
+            return json;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
 
 
     static async patchApi(_newPatch, _collection, _id) {
